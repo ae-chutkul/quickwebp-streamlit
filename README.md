@@ -3,7 +3,6 @@
 🖼️ **QuickWebP** is a simple Streamlit app to convert multiple images (JPG, JPEG, PNG) into WebP format.  
 It supports setting the compression quality, shows file size reduction, and allows downloading all converted images as a ZIP file.
 
----
 
 ## Features
 
@@ -14,4 +13,3 @@ It supports setting the compression quality, shows file size reduction, and allo
 - Download all converted images as a ZIP
 - Lightweight and easy-to-use Streamlit interface
 
----
