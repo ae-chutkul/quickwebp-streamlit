@@ -10,7 +10,7 @@ It is especially **beneficial for graphic designers or users** who need to conve
 ## Features
 
 - Upload multiple JPG/PNG images at once
-- Adjust WebP compression quality (20% – 95%)
+- Adjust WebP lossy compression
 - Show original and converted file sizes
 - Progress bar with elapsed time
 - Download all converted images as a ZIP
