@@ -35,7 +35,7 @@ if uploaded_files:
 
 # --- Radio Button for Quality ---
 compression_quality = st.radio(
-    "Choose Compression Quality",
+    "Choose Lossy Compression",
     options=[50, 65, 75, 85, 95],  
     index=3,  # default = 85
     format_func=lambda x: f"{x}%"  # show with % sign
@@ -95,10 +95,12 @@ if st.button("🔄 Convert to WebP"):
         progress_bar.empty()
         status_text.text("")
         elapsed = time.time() - start_time
-        if elapsed > 60:
+        if elapsed > 120:
             elapsed_minutes = elapsed // 60
             elapsed_seconds = elapsed % 60
             st.success(f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds")
+        elif elapsed > 60:
+            pass
         else:
             st.success(f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {elapsed:.2f} seconds")
 
