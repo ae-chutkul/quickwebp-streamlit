@@ -150,18 +150,10 @@ if st.session_state.converted and "success_message" in st.session_state:
             file_name="converted_images_webp.zip",
             mime="application/zip"
         )
-        
-        # for fname, fbytes in st.session_state.converted_files:
-        #     # st.markdown("&nbsp;&nbsp;", unsafe_allow_html=True)  # 2 spaces indent
-        #     st.download_button(
-        #     label=f"⬇️ {fname}",
-        #     data=fbytes,
-        #     file_name=fname,
-        #     mime="image/webp"
-        # )
 
         with st.container():
             st.markdown("<div>", unsafe_allow_html=True)
+            st.warning("Seperate Download")
             for fname, fbytes in st.session_state.converted_files:
                 st.download_button(
                     label=f"⬇️ {fname}",
