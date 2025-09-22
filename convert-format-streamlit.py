@@ -20,6 +20,9 @@ if "converted" not in st.session_state:
     st.session_state.converted = False
 if "converted_files" not in st.session_state:
     st.session_state.converted_files = []   # store individual files
+if "compression_quality" not in st.session_state:
+    st.session_state.compression_quality = None
+
 
 # Clear session state variables
 def clear_all(): 
@@ -51,7 +54,7 @@ compression_quality = st.radio(
     format_func=lambda x: f"{x}%"  # show with % sign
 )
 
-st.session_state["compression_quality"] = compression_quality
+
 
 # --- Convert Button ---
 if st.button("🔄 Convert to WebP"):
@@ -112,6 +115,7 @@ if st.button("🔄 Convert to WebP"):
         st.session_state.zip_buffer = zip_buffer
         st.session_state.converted = True
         st.session_state.converted_files = converted_files
+        st.session_state.compression_quality = DEFAULT_COMPRESSION_QUALITY
 
         progress_bar.empty()
         status_text.text("")
