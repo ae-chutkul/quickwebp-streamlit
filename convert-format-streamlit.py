@@ -32,7 +32,7 @@ def clear_all():
         if key in st.session_state:
             del st.session_state[key]
 
-    st.session_state.uploaded_files = []
+
 
 
 
@@ -45,7 +45,7 @@ uploaded_files = st.file_uploader(
 
 
 # --- Show number of files uploaded ---
-if uploaded_files:
+if st.session_state.uploaded_files:
     total_file_size = sum(file.size for file in uploaded_files)
     st.info(f"📂 {len(uploaded_files)} file(s) uploaded ({total_file_size / 1024:.2f} KB)")
 
