@@ -157,7 +157,7 @@ if st.session_state.converted and "success_message" in st.session_state:
             for fname, fbytes in st.session_state.converted_files:
                 file_size_kb = len(fbytes) / 1024
 
-                col1, col2 = st.columns([2, 2])
+                col1, col2 = st.columns([3, 1])
 
                 with col1:
                     st.write(f"**{fname}** ({file_size_kb:.2f} KB)")
