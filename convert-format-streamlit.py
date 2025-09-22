@@ -117,7 +117,7 @@ if st.button("🔄 Convert to WebP"):
         st.session_state.zip_buffer = zip_buffer
         st.session_state.converted = True
         st.session_state.converted_files = converted_files
-        st.session_state.compression_quality = DEFAULT_COMPRESSION_QUALITY
+        
 
         progress_bar.empty()
         status_text.text("")
