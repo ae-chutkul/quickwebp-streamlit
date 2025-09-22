@@ -26,11 +26,11 @@ if "uploaded_files" not in st.session_state:
 
 
 # Clear session state variables
-def clear_all(): 
-    keys_to_clear = ["zip_buffer", "converted", "converted_files", "success_message", "uploaded_files"]
-    for key in keys_to_clear:
-        if key in st.session_state:
-            del st.session_state[key]
+# def clear_all(): 
+#     keys_to_clear = ["zip_buffer", "converted", "converted_files", "success_message", "uploaded_files"]
+#     for key in keys_to_clear:
+#         if key in st.session_state:
+#             del st.session_state[key]
 
 
 # --- File uploader ---
@@ -134,7 +134,7 @@ if st.button("🔄 Convert to WebP"):
         else:
             st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {elapsed:.2f} seconds"
         
-st.button("🧹 Clear All", on_click=clear_all)
+# st.button("🧹 Clear All", on_click=clear_all)
                     
                 
 # --- Download ---
