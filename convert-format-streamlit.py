@@ -125,6 +125,13 @@ if st.button("🔄 Convert to WebP"):
 if st.session_state.converted:
     if len(st.session_state.converted_files) <= 10:
         st.warning("Download")
+        st.download_button(
+            "📥 Download All as ZIP",
+            st.session_state.zip_buffer,
+            file_name="converted_images_webp.zip",
+            mime="application/zip"
+        )
+        
         for fname, fbytes in st.session_state.converted_files:
             st.download_button(
                 label=f"💾 {fname}",
@@ -132,12 +139,7 @@ if st.session_state.converted:
                 file_name=fname,
                 mime="image/webp"
             )
-        st.download_button(
-            "📥 Download All as ZIP",
-            st.session_state.zip_buffer,
-            file_name="converted_images_webp.zip",
-            mime="application/zip"
-        )
+        
     else:
         st.download_button(
             "📥 Download All as ZIP",
