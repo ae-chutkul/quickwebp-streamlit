@@ -13,7 +13,7 @@ st.markdown("## 🖼️ QuickWebP - Multiple Image Converter")
 
 DEFAULT_COMPRESSION_QUALITY = 85
 
-# --- Session state ---
+# --- Initialize Session state ---
 if "zip_buffer" not in st.session_state:
     st.session_state.zip_buffer = None
 if "converted" not in st.session_state:
@@ -21,12 +21,13 @@ if "converted" not in st.session_state:
 if "converted_files" not in st.session_state:
     st.session_state.converted_files = []   # store individual files
 
-def clear_all():
-    # Clear session state variables
-    keys_to_clear = ["zip_buffer", "converted", "converted_files", "success_message", "uploaded_files"]
+# Clear session state variables
+def clear_all(): 
+    keys_to_clear = ["zip_buffer", "converted", "converted_files", "success_message", "uploaded_files", "compression_quality"]
     for key in keys_to_clear:
         if key in st.session_state:
             del st.session_state[key]
+
 
 # --- File uploader ---
 uploaded_files = st.file_uploader(
@@ -49,6 +50,8 @@ compression_quality = st.radio(
     index=3,  # default = 85
     format_func=lambda x: f"{x}%"  # show with % sign
 )
+
+st.session_state["compression_quality"] = compression_quality
 
 # --- Convert Button ---
 if st.button("🔄 Convert to WebP"):
@@ -124,7 +127,6 @@ if st.button("🔄 Convert to WebP"):
         else:
             st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {elapsed:.2f} seconds"
         
-
 st.button("🧹 Clear All", on_click=clear_all)
                     
                 
