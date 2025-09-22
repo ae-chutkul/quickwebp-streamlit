@@ -135,6 +135,10 @@ if st.button("🔄 Convert to WebP"):
             st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {elapsed:.2f} seconds"
         
 # st.button("🧹 Clear All", on_click=clear_all)
+st.markdown(
+    '<a href="#" style="text-decoration:none;font-size:20px;">&#xf0c7; Download</a>',
+    unsafe_allow_html=True
+)
                     
                 
 # --- Download ---
