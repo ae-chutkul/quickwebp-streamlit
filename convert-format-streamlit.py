@@ -37,8 +37,7 @@ def clear_all():
 uploaded_files = st.file_uploader(
     "Choose images",
     type=["jpg", "jpeg", "png"],
-    accept_multiple_files=True,
-    key="uploaded_files"
+    accept_multiple_files=True,   
 )
 
 
