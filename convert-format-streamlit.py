@@ -38,14 +38,16 @@ uploaded_files = st.file_uploader(
     "Choose images",
     type=["jpg", "jpeg", "png"],
     accept_multiple_files=True,
+    key="uploaded_files"
 )
 
 
 # --- Show number of files uploaded ---
 if uploaded_files:
     total_file_size = sum(file.size for file in uploaded_files)
-    total_files = len(uploaded_files)
-    st.info(f"📂 {total_files} file(s) uploaded ({total_file_size / 1024:.2f} KB)")
+    total_files_count = len(uploaded_files)
+
+    st.info(f"📂 {total_files_count} file(s) uploaded ({total_file_size / 1024:.2f} KB)")
 
 
 # --- Radio Button for Quality ---
