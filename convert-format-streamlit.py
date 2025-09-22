@@ -116,6 +116,7 @@ if st.button("🔄 Convert to WebP"):
             st.success(f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds")
         else:
             st.success(f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {elapsed:.2f} seconds")
+        
 
         
                     
@@ -131,6 +132,12 @@ if st.session_state.converted:
                 file_name=fname,
                 mime="image/webp"
             )
+        st.download_button(
+            "📥 Download All as ZIP",
+            st.session_state.zip_buffer,
+            file_name="converted_images_webp.zip",
+            mime="application/zip"
+        )
     else:
         st.download_button(
             "📥 Download All as ZIP",
