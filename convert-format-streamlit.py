@@ -20,6 +20,8 @@ if "converted" not in st.session_state:
     st.session_state.converted = False
 if "converted_files" not in st.session_state:
     st.session_state.converted_files = []   # store individual files
+if "uploaded_files" not in st.session_state:
+    st.session_state.uploaded_files = []
 
 
 
@@ -30,6 +32,7 @@ def clear_all():
         if key in st.session_state:
             del st.session_state[key]
 
+    st.session_state.uploaded_files = []
 
 
 
