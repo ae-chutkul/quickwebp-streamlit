@@ -51,7 +51,7 @@ if uploaded_files:
 compression_quality = st.radio(
     "Choose Lossy Compression",
     options=[50, 65, 75, 85, 95],  
-    index=[50, 65, 75, 85, 95].index(3),
+    index=3,
     format_func=lambda x: f"{x}%"  # show with % sign
 )
 
