@@ -20,8 +20,7 @@ if "converted" not in st.session_state:
     st.session_state.converted = False
 if "converted_files" not in st.session_state:
     st.session_state.converted_files = []   # store individual files
-if "compression_quality" not in st.session_state:
-    st.session_state.compression_quality = DEFAULT_COMPRESSION_QUALITY
+
 
 
 # Clear session state variables
@@ -31,7 +30,7 @@ def clear_all():
         if key in st.session_state:
             del st.session_state[key]
 
-    st.session_state.compression_quality = 85
+
 
 
 # --- File uploader ---
@@ -52,7 +51,7 @@ if uploaded_files:
 compression_quality = st.radio(
     "Choose Lossy Compression",
     options=[50, 65, 75, 85, 95],  
-    index=[50, 65, 75, 85, 95].index(st.session_state.get("compression_quality", DEFAULT_COMPRESSION_QUALITY)),
+    index=[50, 65, 75, 85, 95].index(3),
     format_func=lambda x: f"{x}%"  # show with % sign
 )
 
