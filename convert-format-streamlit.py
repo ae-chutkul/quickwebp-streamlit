@@ -152,7 +152,7 @@ if st.session_state.converted and "success_message" in st.session_state:
         )
         
         for fname, fbytes in st.session_state.converted_files:
-            st.markdown("&nbsp;&nbsp;", unsafe_allow_html=True)  # 2 spaces indent
+            # st.markdown("&nbsp;&nbsp;", unsafe_allow_html=True)  # 2 spaces indent
             st.download_button(
             label=f"⬇️ {fname}",
             data=fbytes,
