@@ -123,7 +123,7 @@ if st.button("🔄 Convert to WebP"):
 # --- Download ---
 if st.session_state.converted:
     if len(st.session_state.converted_files) <= 10:
-        st.info("Individual Download Below")
+        st.warning("Download")
         for fname, fbytes in st.session_state.converted_files:
             st.download_button(
                 label=f"📥 {fname}",
