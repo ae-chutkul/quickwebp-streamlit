@@ -126,7 +126,7 @@ if st.session_state.converted:
         st.warning("Download")
         for fname, fbytes in st.session_state.converted_files:
             st.download_button(
-                label=f"📥 {fname}",
+                label=f"💾 {fname}",
                 data=fbytes,
                 file_name=fname,
                 mime="image/webp"
