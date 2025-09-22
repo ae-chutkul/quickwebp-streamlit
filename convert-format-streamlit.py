@@ -29,10 +29,9 @@ def clear_all():
     keys_to_clear = ["zip_buffer", "converted", "converted_files", "success_message", "uploaded_files", "compression_quality"]
     for key in keys_to_clear:
         if key in st.session_state:
-            if key == "compression_quality":
-                st.session_state.compression_quality = 85
-            else:
-                del st.session_state[key]
+            del st.session_state[key]
+
+    st.session_state.compression_quality = DEFAULT_COMPRESSION_QUALITY
 
 
 # --- File uploader ---
@@ -53,7 +52,7 @@ if uploaded_files:
 compression_quality = st.radio(
     "Choose Lossy Compression",
     options=[50, 65, 75, 85, 95],  
-    index=3,  # default = 85
+    index=[50, 65, 75, 85, 95].index(st.session_state.compression_quality)
     format_func=lambda x: f"{x}%"  # show with % sign
 )
 
