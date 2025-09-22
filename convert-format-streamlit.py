@@ -64,12 +64,12 @@ if st.button("🔄 Convert to WebP"):
                 total_original_size += orig_size
 
                 # Convert image
-                img = Image.open(file).convert("RGB")
+                img = Image.open(file).convert("RGBA")
 
                 # Create individual memeroy buffer and save image into buffer.
                 img_bytes = io.BytesIO()
                 # print(f"imag_bytes: ", img_bytes)
-                img.save(img_bytes, "webp", quality=compression_quality)
+                img.save(img_bytes, "webp", quality=compression_quality, lossess=True)
 
                 # New file size in WEBP format (.getvalue() to access the value in memory buffer address)
                 webp_size = len(img_bytes.getvalue())
