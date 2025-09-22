@@ -18,6 +18,8 @@ if "zip_buffer" not in st.session_state:
     st.session_state.zip_buffer = None
 if "converted" not in st.session_state:
     st.session_state.converted = False
+if "converted_files" not in st.session_state:
+    st.session_state.converted_files = []   # store individual files
 
 # --- File uploader ---
 uploaded_files = st.file_uploader(
@@ -54,6 +56,7 @@ if st.button("🔄 Convert to WebP"):
 
         total_original_size = 0
         total_webp_size = 0
+        converted_files = []
 
         with zipfile.ZipFile(zip_buffer, "w") as zip_file:
             for i, file in enumerate(uploaded_files):
@@ -64,7 +67,11 @@ if st.button("🔄 Convert to WebP"):
                 total_original_size += orig_size
 
                 # Convert image
-                img = Image.open(file).convert("RGBA")
+                img = Image.open(file)
+                if file.type == "image/png":
+                    img = img.convert("RGBA")    # Preserve transparency if PNG
+                else:
+                    img = img.convert("RGB")
 
                 # Create individual memeroy buffer and save image into buffer.
                 img_bytes = io.BytesIO()
@@ -82,6 +89,8 @@ if st.button("🔄 Convert to WebP"):
                 new_filename_webp = file.name.rsplit(".", 1)[0] + ".webp"
                 zip_file.writestr(new_filename_webp, img_bytes.read())  # img_bytes.read() means read the entire content
 
+                converted_files.append((new_filename_webp, img_bytes.getvalue()))
+
                 # Update progress
                 progress = (i + 1) / len(uploaded_files)
                 progress_bar.progress(progress)
@@ -92,6 +101,7 @@ if st.button("🔄 Convert to WebP"):
         zip_buffer.seek(0)
         st.session_state.zip_buffer = zip_buffer
         st.session_state.converted = True
+        
         progress_bar.empty()
         status_text.text("")
 
@@ -110,10 +120,21 @@ if st.button("🔄 Convert to WebP"):
                     
                 
 # --- Download ---
-if st.session_state.converted and st.session_state.zip_buffer:
-    st.download_button(
-        "📥 Download All as ZIP",
-        st.session_state.zip_buffer,
-        file_name="converted_images_webp.zip",
-        mime="application/zip"
-    )
+if st.session_state.converted:
+    if len(st.session_state.converted_files) <= 10:
+        st.info("⬇️ Download individually:")
+        for fname, fbytes in st.session_state.converted_files:
+            st.download_button(
+                label=f"📥 {fname}",
+                data=fbytes,
+                file_name=fname,
+                mime="image/webp"
+            )
+    else:
+        st.download_button(
+            "📥 Download All as ZIP",
+            st.session_state.zip_buffer,
+            file_name="converted_images_webp.zip",
+            mime="application/zip"
+        )
+    
