@@ -43,8 +43,9 @@ uploaded_files = st.file_uploader(
 
 # --- Show number of files uploaded ---
 if st.session_state.uploaded_files:
-    total_file_size = sum(file.size for file in st.session_state.uploaded_files)
-    st.info(f"📂 {len(st.session_state.uploaded_files)} file(s) uploaded ({total_file_size / 1024:.2f} KB)")
+    total_file_size = sum(file.size for file in uploaded_files)
+    total_files = len(uploaded_files)
+    st.info(f"📂 {total_files} file(s) uploaded ({total_file_size / 1024:.2f} KB)")
 
 
 # --- Radio Button for Quality ---
