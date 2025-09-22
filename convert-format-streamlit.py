@@ -162,7 +162,7 @@ if st.session_state.converted and "success_message" in st.session_state:
 
         # Add indentation (horizontal shift)
         with st.container():
-            st.markdown("<div style='margin-left: 40px;'>", unsafe_allow_html=True)
+            st.markdown("<div style='margin-left: 80px;'>", unsafe_allow_html=True)
             for fname, fbytes in st.session_state.converted_files:
                 st.download_button(
                     label=f"⬇️ {fname}",
