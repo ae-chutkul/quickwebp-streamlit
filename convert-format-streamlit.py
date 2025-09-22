@@ -31,7 +31,7 @@ def clear_all():
         if key in st.session_state:
             del st.session_state[key]
 
-    st.session_state.compression_quality = DEFAULT_COMPRESSION_QUALITY
+    st.session_state.compression_quality = 85
 
 
 # --- File uploader ---
