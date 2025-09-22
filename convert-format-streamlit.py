@@ -153,7 +153,6 @@ if st.session_state.converted and "success_message" in st.session_state:
 
         with st.container():
             st.markdown("<div>", unsafe_allow_html=True)
-            st.warning("📄 Individual Download")
 
             for fname, fbytes in st.session_state.converted_files:
                 file_size_kb = len(fbytes) / 1024
