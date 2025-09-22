@@ -150,7 +150,7 @@ if st.session_state.converted and "success_message" in st.session_state:
             file_name="converted_images_webp.zip",
             mime="application/zip"
         )
-        st.warning("Download Individually")
+        st.warning("📄 Individual Download")
         for fname, fbytes in st.session_state.converted_files:
             st.download_button(
                 label=f"⬇️ {fname}",
