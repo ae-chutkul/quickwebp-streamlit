@@ -151,7 +151,7 @@ if st.session_state.converted and "success_message" in st.session_state:
             mime="application/zip"
         )
         
-        col1, col2 = st.columns([1, 5])
+        col1, col2 = st.columns([1, 2])
         for fname, fbytes in st.session_state.converted_files:
             with col2:
                 st.download_button(
