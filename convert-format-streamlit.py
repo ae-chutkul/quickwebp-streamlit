@@ -21,6 +21,13 @@ if "converted" not in st.session_state:
 if "converted_files" not in st.session_state:
     st.session_state.converted_files = []   # store individual files
 
+def clear_all():
+    # Clear session state variables
+    keys_to_clear = ["zip_buffer", "converted", "converted_files", "success_message", "uploaded_files"]
+    for key in keys_to_clear:
+        if key in st.session_state:
+            del st.session_state[key]
+
 # --- File uploader ---
 uploaded_files = st.file_uploader(
     "Choose images",
@@ -112,19 +119,19 @@ if st.button("🔄 Convert to WebP"):
 
         if elapsed >= 120:
             st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds"
-        elif elapsed >= 60:
+        elif elapsed > 60:
             st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds"
         else:
             st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {elapsed:.2f} seconds"
         
 
-        
+st.button("🧹 Clear All", on_click=clear_all)
                     
                 
 # --- Download ---
 if st.session_state.converted and "success_message" in st.session_state:
     st.success(st.session_state["success_message"])
-    
+
     if len(st.session_state.converted_files) <= 10:
         
         st.download_button(
