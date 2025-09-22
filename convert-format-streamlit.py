@@ -60,7 +60,7 @@ compression_quality = st.radio(
 # --- Convert Button ---
 if st.button("🔄 Convert to WebP"):
     if not uploaded_files:
-        st.warning("⚠️ Upload at least one image before converting.")
+        st.danger("⚠️ Upload at least one image before converting.")
     else:
         zip_buffer = io.BytesIO()
         progress_bar = st.progress(0)
