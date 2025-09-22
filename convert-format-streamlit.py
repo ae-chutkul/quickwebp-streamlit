@@ -111,18 +111,20 @@ if st.button("🔄 Convert to WebP"):
         elapsed_seconds = elapsed % 60
 
         if elapsed >= 120:
-            st.success(f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds")
+            st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds"
         elif elapsed >= 60:
-            st.success(f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds")
+            st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds"
         else:
-            st.success(f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {elapsed:.2f} seconds")
+            st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {elapsed:.2f} seconds"
         
 
         
                     
                 
 # --- Download ---
-if st.session_state.converted:
+if st.session_state.converted and "success_message" in st.session_state:
+    st.success(st.session_state["success_message"])
+    
     if len(st.session_state.converted_files) <= 10:
         
         st.download_button(
