@@ -33,15 +33,11 @@ def clear_all():
             del st.session_state[key]
 
 
-
-
-
 # --- File uploader ---
 uploaded_files = st.file_uploader(
     "Choose images",
     type=["jpg", "jpeg", "png"],
     accept_multiple_files=True,
-    key="uploaded_files"
 )
 
 
