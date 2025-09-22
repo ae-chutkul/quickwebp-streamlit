@@ -151,27 +151,27 @@ if st.session_state.converted and "success_message" in st.session_state:
             mime="application/zip"
         )
         
-        # for fname, fbytes in st.session_state.converted_files:
-        #     st.markdown("&nbsp;&nbsp;", unsafe_allow_html=True)  # 2 spaces indent
-        #     st.download_button(
-        #     label=f"⬇️ {fname}",
-        #     data=fbytes,
-        #     file_name=fname,
-        #     mime="image/webp"
-        # )
+        for fname, fbytes in st.session_state.converted_files:
+            st.markdown("&nbsp;&nbsp;", unsafe_allow_html=True)  # 2 spaces indent
+            st.download_button(
+            label=f"⬇️ {fname}",
+            data=fbytes,
+            file_name=fname,
+            mime="image/webp"
+        )
 
         # Add indentation (horizontal shift)
-        with st.container():
-            st.markdown("<div style='margin-left: 80px;'>", unsafe_allow_html=True)
-            for fname, fbytes in st.session_state.converted_files:
-                st.download_button(
-                    label=f"⬇️ {fname}",
-                    data=fbytes,
-                    file_name=fname,
-                    mime="image/webp",
-                    key=f"dl_{fname}"  # unique key for each
-                )
-            st.markdown("</div>", unsafe_allow_html=True) 
+        # with st.container():
+        #     st.markdown("<div style='margin-left: 80px;'>", unsafe_allow_html=True)
+        #     for fname, fbytes in st.session_state.converted_files:
+        #         st.download_button(
+        #             label=f"⬇️ {fname}",
+        #             data=fbytes,
+        #             file_name=fname,
+        #             mime="image/webp",
+        #             key=f"dl_{fname}"  # unique key for each
+        #         )
+        #     st.markdown("</div>", unsafe_allow_html=True) 
         
     else:
         st.download_button(
