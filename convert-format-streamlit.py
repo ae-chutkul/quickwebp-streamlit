@@ -101,7 +101,8 @@ if st.button("🔄 Convert to WebP"):
         zip_buffer.seek(0)
         st.session_state.zip_buffer = zip_buffer
         st.session_state.converted = True
-        
+        st.session_state.converted_files = converted_files
+
         progress_bar.empty()
         status_text.text("")
 
