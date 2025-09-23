@@ -77,7 +77,7 @@ def quickWebP():
         total_file_size = sum(file.size for file in uploaded_files)
         total_files_count = len(uploaded_files)
         
-        st.info(f"📂 {total_files_count} file(s) uploaded ({total_file_size / 1024:.2f} KB)")
+        st.info(f"📂 {total_files_count:,} file(s) uploaded ({total_file_size / 1024:,.2f} KB)")
 
 
     # --- Radio Button for Quality ---
@@ -157,11 +157,11 @@ def quickWebP():
             elapsed_seconds = elapsed % 60
 
             if elapsed >= 120:
-                st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds"
+                st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:,.2f} KB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds"
             elif elapsed > 60:
-                st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds"
+                st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:,.2f} KB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds"
             else:
-                st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:.2f} KB) successfully in {elapsed:.2f} seconds"
+                st.session_state["success_message"] = f"✅ Converted {len(uploaded_files)} files ({total_webp_size / 1024:,.2f} KB) successfully in {elapsed:.2f} seconds"
     
 
     # --- Download ---
@@ -207,7 +207,7 @@ def quickWebP():
             )
             
     st.write("-----------------------------------------------------")
-    
+
     # --- Logout ---
     if st.button("Logout"):
         st.session_state.logged_in = False
