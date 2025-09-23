@@ -77,7 +77,7 @@ def quickWebP():
         total_file_size = sum(file.size for file in uploaded_files)
         total_files_count = len(uploaded_files)
         
-        st.info(f"📂 {total_files_count:,} file(s) uploaded ({total_file_size / 1024:,.2f} KB)")
+        st.info(f"📂 {total_files_count} file(s) uploaded ({total_file_size / 1024:,.2f} KB)")
 
 
     # --- Radio Button for Quality ---
