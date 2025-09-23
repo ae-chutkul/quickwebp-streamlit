@@ -163,7 +163,7 @@ if st.session_state.converted and "success_message" in st.session_state:
                     st.write(f"**{fname}** ({file_size_kb:.2f} KB)")
                 with col2: 
                     st.download_button(
-                    label=f"⬇️ Download",
+                    label=f"Download",
                     data=fbytes,
                     file_name=fname,
                     mime="image/webp",
