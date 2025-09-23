@@ -7,8 +7,8 @@ import time
 
 # st.title("Multi-Image WebP Converter")
 
-st.set_page_config(page_title="QuickWebP", page_icon="🖼️")
-st.markdown("## 🖼️ QuickWebP - Multiple Image Converter")
+st.set_page_config(page_title="QuickWebP", page_icon="🚀")
+st.markdown("## 🚀 QuickWebP - Multiple Image Converter")
 
 
 DEFAULT_COMPRESSION_QUALITY = 85
