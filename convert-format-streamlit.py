@@ -145,7 +145,7 @@ if st.session_state.converted and "success_message" in st.session_state:
     if len(st.session_state.converted_files) <= 10:
         
         st.download_button(
-            "📦 Download All as ZIP",
+            "📦 Download as ZIP",
             st.session_state.zip_buffer,
             file_name="converted_images_webp.zip",
             mime="application/zip"
