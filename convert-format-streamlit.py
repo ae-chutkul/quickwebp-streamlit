@@ -19,7 +19,7 @@ def login():
     print(st.session_state)
 
     st.set_page_config(page_title="QuickWebP", page_icon="🚀")
-    st.title(" Welcome to QuickWebP 🚀 ")
+    st.title(" 🚀 Welcome to QuickWebP")
 
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
@@ -181,25 +181,25 @@ def quickWebP():
             elapsed_seconds = elapsed % 60
 
             # Convert WebP file size from KB to MB if size greater than 1024 otherwise still be KB
-            webp_size = filesize_unit_converter(total_webp_size)
+            webp_size_unit_conv = filesize_unit_converter(total_webp_size)
 
             if elapsed >= 120:
                 if total_webp_size / 1024 >= 1024:
-                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} MB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds"
+                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size_unit_conv:,.2f} MB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds"
                 else:
-                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} KB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds"
+                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size_unit_conv:,.2f} KB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds"
                 
             elif elapsed > 60:
                 if total_webp_size / 1024 >= 1024:
-                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} MB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds"
+                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size_unit_conv:,.2f} MB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds"
                 else:
-                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} KB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds"
+                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size_unit_conv:,.2f} KB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds"
                 
             else:
                 if total_webp_size / 1024 >= 1024:
-                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} MB) successfully in {elapsed:.2f} seconds"
+                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size_unit_conv:,.2f} MB) successfully in {elapsed:.2f} seconds"
                 else:
-                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} KB) successfully in {elapsed:.2f} seconds"
+                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size_unit_conv:,.2f} KB) successfully in {elapsed:.2f} seconds"
                 
                 
     
