@@ -32,6 +32,7 @@ def login():
         else:
             st.error("❌ Invalid username or password")
     
+    st.write("")
     st.info(
     "🚀 **QuickWebP** supports instantly convert multiple images (JPG, JPEG, PNG) from several hundreds to thousand"
     " into the modern **WebP** format with single click.\n\n"
