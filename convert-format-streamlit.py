@@ -150,7 +150,7 @@ def quickWebP():
                     progress = (i + 1) / len(uploaded_files)
                     progress_bar.progress(progress)
 
-                    status_text.text(f"Converting {file.name} ({i+1}/{len(uploaded_files)}) from {orig_size / 1024:.2f} KB to {webp_size / 1024:.2f} KB")
+                    status_text.text(f"Converting {file.name} (({i+1}/{len(uploaded_files)}):,) from {orig_size / 1024:.2f} KB to {webp_size / 1024:.2f} KB")
                         
 
             zip_buffer.seek(0)
