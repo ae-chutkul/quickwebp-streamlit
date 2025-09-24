@@ -180,27 +180,24 @@ def quickWebP():
             elapsed_minutes = elapsed // 60
             elapsed_seconds = elapsed % 60
 
+            webp_size = filesize_unit_converter(total_webp_size)
+
             if elapsed >= 120:
                 if total_webp_size / 1024 >= 1024:
-                    webp_size = filesize_unit_converter(total_webp_size)
                     st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} MB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds"
                 else:
-                    webp_size = filesize_unit_converter(total_webp_size)
                     st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} KB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds"
                 
             elif elapsed > 60:
                 if total_webp_size / 1024 >= 1024:
-                    webp_size = filesize_unit_converter(total_webp_size)
                     st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} MB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds"
                 else:
                     st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} KB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds"
                 
             else:
                 if total_webp_size / 1024 >= 1024:
-                    webp_size = filesize_unit_converter(total_webp_size)
                     st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} MB) successfully in {elapsed:.2f} seconds"
                 else:
-                    webp_size = filesize_unit_converter(total_webp_size)
                     st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} KB) successfully in {elapsed:.2f} seconds"
                 
                 
