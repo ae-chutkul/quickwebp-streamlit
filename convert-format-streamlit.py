@@ -55,6 +55,8 @@ def quickWebP():
         st.session_state.converted_files = []   # store individual files
     if "uploaded_files" not in st.session_state:
         st.session_state.uploaded_files = []
+    if "files" not in st.session_state:
+        st.session_state.files = []
 
     print("QuickWebP Session: ", st.session_state)
 
@@ -169,6 +171,9 @@ def quickWebP():
         st.success(st.session_state["success_message"])
 
         if len(st.session_state.converted_files) <= 10:
+
+            
+
             
             st.download_button(
                 "📦 Download as ZIP",
@@ -186,7 +191,8 @@ def quickWebP():
                     col1, col2 = st.columns([3, 1])
 
                     with col1:
-                        st.write(f"**{fname}** ({file_size_kb:.2f} KB)")
+                        # st.write(f"**{fname}** ({file_size_kb:.2f} KB)")
+                        st.image(Image.open(fbytes), caption=fname, width=80)
                     with col2: 
                         st.download_button(
                         label=f"Download",
