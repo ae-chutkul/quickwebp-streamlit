@@ -196,6 +196,8 @@ def quickWebP():
                         st.write(f"**{fname}** ({file_size_kb:.2f} KB)")
                     with col2: 
                         st.write("")
+                        st.write("")
+                        
                         st.download_button(
                         label=f"Download",
                         data=fbytes,
