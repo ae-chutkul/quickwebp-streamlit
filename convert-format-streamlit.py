@@ -35,7 +35,7 @@ def login():
     st.write("")
     st.info(
     "🚀 **QuickWebP** supports instantly convert multiple images (JPG, JPEG, PNG) from several hundreds to thousand"
-    " into the modern **WebP** format with single click.\n\n"
+    " into modern WebP format with single click.\n\n"
     "In addition, WebP provides a **smaller file sizes** while still keep **high image quality** — "
     "perfect for using on web and faster sharing. ✨✨"
 )
