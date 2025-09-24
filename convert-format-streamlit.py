@@ -195,6 +195,7 @@ def quickWebP():
                         st.image(Image.open(io.BytesIO(fbytes)), width=80)
                         st.write(f"**{fname}** ({file_size_kb:.2f} KB)")
                     with col2: 
+                        st.write("")
                         st.download_button(
                         label=f"Download",
                         data=fbytes,
