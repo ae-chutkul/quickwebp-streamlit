@@ -180,6 +180,7 @@ def quickWebP():
             elapsed_minutes = elapsed // 60
             elapsed_seconds = elapsed % 60
 
+            # Convert WebP file size from KB to MB if size greater than 1024 otherwise still be KB
             webp_size = filesize_unit_converter(total_webp_size)
 
             if elapsed >= 120:
