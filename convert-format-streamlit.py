@@ -31,6 +31,13 @@ def login():
             st.rerun()
         else:
             st.error("❌ Invalid username or password")
+    
+    st.info(
+    "✨ **QuickWebP** helps you instantly convert multiple images (JPG, JPEG, PNG) "
+    "into the modern **WebP format**.\n\n"
+    "With WebP, you get **smaller file sizes** while keeping **high image quality** — "
+    "perfect for web use and faster sharing. 🚀"
+)
 
 # Clear session state variables
 def clear_all(): 
@@ -217,7 +224,7 @@ def quickWebP():
     st.write("-----------------------------------------------------")
 
     # --- Logout ---
-    if st.button(" Logout "):
+    if st.button("Logout"):
         st.session_state.logged_in = False
         clear_all()
         st.rerun()
