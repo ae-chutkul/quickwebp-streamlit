@@ -171,9 +171,6 @@ def quickWebP():
         st.success(st.session_state["success_message"])
 
         if len(st.session_state.converted_files) <= 10:
-
-            
-
             
             st.download_button(
                 "📦 Download as ZIP",
@@ -191,16 +188,16 @@ def quickWebP():
                     col1, col2 = st.columns([3, 1])
 
                     with col1:
-                        
                         st.image(Image.open(io.BytesIO(fbytes)), width=80)
                         st.write(f"**{fname}** ({file_size_kb:.2f} KB)")
+
                     with col2: 
                         st.write("")
                         st.write("")
                         st.write("")
 
                         st.download_button(
-                        label=f"Download",
+                        label=f"⬇️ Download",
                         data=fbytes,
                         file_name=fname,
                         mime="image/webp",
