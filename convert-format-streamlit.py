@@ -36,7 +36,7 @@ def login():
     st.info(
     "🚀 **QuickWebP** supports instantly convert multiple images (JPG, JPEG, PNG) from several hundreds to thousand"
     " into the modern **WebP** format with single click.\n\n"
-    "In addition, with WebP, you get **smaller file sizes** while keeping **high image quality** — "
+    "In addition, with WebP, you get **smaller file sizes** while still keep **high image quality** — "
     "perfect for using on web and faster sharing. ✨✨"
 )
 
@@ -48,6 +48,15 @@ def clear_all():
             del st.session_state[key]
 
     print("clear_all: ", st.session_state)
+
+# --- File Size Converter from KB to MB ---
+def filesize_unit_converter(file_size):
+    # KB to MB
+    if file_size / 1024 >= 1024:
+        return file_size / (1024 * 1024)
+    # KB
+    else:
+        return file_size / 1024
 
 
 def quickWebP():
@@ -86,8 +95,13 @@ def quickWebP():
     if uploaded_files:
         total_file_size = sum(file.size for file in uploaded_files)
         total_files_count = len(uploaded_files)
-        
-        st.info(f"📂 {total_files_count:,} file(s) uploaded ({total_file_size / 1024:,.2f} KB)")
+
+        if total_file_size / 1024 >= 1024:
+            total_file_size_conv = filesize_unit_converter(total_file_size)
+            st.info(f"📂 {total_files_count:,} file(s) uploaded ({total_file_size_conv:,.2f} MB)")
+        else:
+            total_file_size_conv = filesize_unit_converter(total_file_size)
+            st.info(f"📂 {total_files_count:,} file(s) uploaded ({total_file_size_conv:,.2f} KB)")
 
 
     # --- Radio Button for Quality ---
@@ -167,11 +181,29 @@ def quickWebP():
             elapsed_seconds = elapsed % 60
 
             if elapsed >= 120:
-                st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({total_webp_size / 1024:,.2f} KB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds"
+                if total_webp_size / 1024 >= 1024:
+                    webp_size = filesize_unit_converter(total_webp_size)
+                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} MB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds"
+                else:
+                    webp_size = filesize_unit_converter(total_webp_size)
+                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} KB) successfully in {int(elapsed_minutes)} minutes {elapsed_seconds:.2f} seconds"
+                
             elif elapsed > 60:
-                st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({total_webp_size / 1024:,.2f} KB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds"
+                if total_webp_size / 1024 >= 1024:
+                    webp_size = filesize_unit_converter(total_webp_size)
+                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} MB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds"
+                else:
+                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} KB) successfully in {int(elapsed_minutes)} minute {elapsed_seconds:.2f} seconds"
+                
             else:
-                st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({total_webp_size / 1024:,.2f} KB) successfully in {elapsed:.2f} seconds"
+                if total_webp_size / 1024 >= 1024:
+                    webp_size = filesize_unit_converter(total_webp_size)
+                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} MB) successfully in {elapsed:.2f} seconds"
+                else:
+                    webp_size = filesize_unit_converter(total_webp_size)
+                    st.session_state["success_message"] = f"✅ Converted {len(uploaded_files):,} files ({webp_size:,.2f} KB) successfully in {elapsed:.2f} seconds"
+                
+                
     
 
     # --- Download ---
