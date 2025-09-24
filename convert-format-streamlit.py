@@ -197,7 +197,7 @@ def quickWebP():
                         st.write("")
 
                         st.download_button(
-                        label=f"⬇️ Download",
+                        label=f"⬇ Download",
                         data=fbytes,
                         file_name=fname,
                         mime="image/webp",
